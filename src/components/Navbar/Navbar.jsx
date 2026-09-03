@@ -46,7 +46,9 @@ const Navbar = () => {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} role="banner">
       <div className="container navbar__inner">
         <Link to="/" className="navbar__logo" aria-label="Wanderlust Home">
-          <span className="navbar__logo-icon">✈</span>
+          <svg className="navbar__logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.5-.1-.9.1-1.1.5l-.8 1.4c-.2.4-.1.9.3 1.2l4.8 3.8-2.6 2.6-2.1-.5c-.3-.1-.7 0-.9.2l-.7.7c-.2.2-.2.6 0 .8l2.5 2.5c.2.2.6.2.8 0l.7-.7c.2-.2.3-.6.2-.9l-.5-2.1 2.6-2.6 3.8 4.8c.3.4.8.5 1.2.3l1.4-.8c.4-.2.6-.6.5-1.1z"/>
+          </svg>
           <span className="navbar__logo-text">Wanderlust</span>
         </Link>
 
@@ -69,6 +71,9 @@ const Navbar = () => {
             className={({ isActive }) => `navbar__link navbar__profile-tag ${isActive ? 'active' : ''}`}
             id="nav-my-trips"
           >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
             <span>My Trips</span>
             {savedCount > 0 && (
               <span className="navbar__badge">{savedCount}</span>
@@ -79,7 +84,10 @@ const Navbar = () => {
             className={({ isActive }) => `navbar__link navbar__user-btn ${isActive ? 'active' : ''}`}
             id="nav-login"
           >
-            <span className="navbar__profile-avatar">👤</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
             <span>{user ? user.name : 'Sign In'}</span>
           </NavLink>
         </nav>

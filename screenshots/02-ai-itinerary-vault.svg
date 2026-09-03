@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14"/>
+      <stop offset="100%" stop-color="#0f1420"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#e8860c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg2)"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="72" fill="#080c14"/>
+  <text x="90" y="44" font-family="Inter, sans-serif" font-weight="bold" font-size="20" fill="#ffffff">Wanderlust</text>
+  <text x="850" y="44" font-family="Inter, sans-serif" font-size="14" fill="#8892a4">Home</text>
+  <text x="920" y="44" font-family="Inter, sans-serif" font-size="14" fill="#8892a4">Destinations</text>
+  <rect x="1030" y="24" width="110" height="32" rx="16" fill="rgba(245,166,35,0.2)"/>
+  <text x="1045" y="45" font-family="Inter, sans-serif" font-size="13" fill="#f5a623" font-weight="700">My Trips (2)</text>
+
+  <!-- Title -->
+  <text x="80" y="140" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#f5a623" letter-spacing="2">USER PROFILE</text>
+  <text x="80" y="180" font-family="Inter, sans-serif" font-size="36" font-weight="900" fill="#ffffff">My Travel Vault</text>
+  <text x="80" y="210" font-family="Inter, sans-serif" font-size="14" fill="#8892a4">Saved AI itineraries and bookmarked destinations stored for future reference.</text>
+
+  <!-- Tabs -->
+  <rect x="80" y="245" width="160" height="3" fill="#f5a623"/>
+  <text x="80" y="235" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#f5a623">Saved Itineraries (2)</text>
+  <text x="280" y="235" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8892a4">Bookmarked Places (2)</text>
+
+  <!-- Card 1 -->
+  <rect x="80" y="275" width="1040" height="160" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(245,166,35,0.2)" stroke-width="1"/>
+  <rect x="100" y="295" width="90" height="22" rx="11" fill="rgba(245,166,35,0.15)"/>
+  <text x="112" y="310" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#f5a623">3 DAYS PLAN</text>
+  
+  <text x="100" y="345" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#ffffff">Santorini, Greece</text>
+  <text x="100" y="368" font-family="Inter, sans-serif" font-size="12" fill="#f5a623">Preferences: budget travel, adventure</text>
+
+  <rect x="940" y="295" width="160" height="38" rx="8" fill="url(#gold)"/>
+  <text x="962" y="319" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">View Saved Plan →</text>
+
+  <!-- Days Grid -->
+  <rect x="100" y="385" width="280" height="36" rx="6" fill="#161d2e"/>
+  <text x="110" y="407" font-family="Inter, sans-serif" font-size="11" fill="#ffffff">Day 1: Caldera Ridge Trek &amp; Cliff Jump</text>
+
+  <rect x="400" y="385" width="280" height="36" rx="6" fill="#161d2e"/>
+  <text x="410" y="407" font-family="Inter, sans-serif" font-size="11" fill="#ffffff">Day 2: Lost Civilizations &amp; Volcanic Shores</text>
+
+  <rect x="700" y="385" width="280" height="36" rx="6" fill="#161d2e"/>
+  <text x="710" y="407" font-family="Inter, sans-serif" font-size="11" fill="#ffffff">Day 3: Summit Hike &amp; Black Sands</text>
+
+  <!-- Card 2 -->
+  <rect x="80" y="460" width="1040" height="160" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="100" y="480" width="90" height="22" rx="11" fill="rgba(245,166,35,0.15)"/>
+  <text x="112" y="495" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#f5a623">5 DAYS PLAN</text>
+  <text x="100" y="530" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#ffffff">Paris, France</text>
+  <text x="100" y="553" font-family="Inter, sans-serif" font-size="12" fill="#f5a623">Preferences: culinary, art museums</text>
+  
+  <rect x="940" y="480" width="160" height="38" rx="8" fill="url(#gold)"/>
+  <text x="962" y="504" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">View Saved Plan →</text>
+</svg>

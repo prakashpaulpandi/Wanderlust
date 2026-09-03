@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { generateItinerary } from '../../services/geminiService';
 import { saveTrip } from '../../services/storageService';
@@ -100,13 +100,22 @@ const DayCard = ({ day, index }) => {
   );
 };
 
-const ItineraryPlanner = ({ destination }) => {
-  const [days, setDays] = useState(3);
-  const [preferences, setPreferences] = useState('');
-  const [itinerary, setItinerary] = useState(null);
+const ItineraryPlanner = ({ destination, initialItinerary = null, initialDays = 3, initialPref = '' }) => {
+  const [days, setDays] = useState(initialDays);
+  const [preferences, setPreferences] = useState(initialPref);
+  const [itinerary, setItinerary] = useState(initialItinerary);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isSaved, setIsSaved] = useState(false);
+  const [isSaved, setIsSaved] = useState(!!initialItinerary);
+
+  useEffect(() => {
+    if (initialItinerary) {
+      setItinerary(initialItinerary);
+      setDays(initialDays);
+      if (initialPref) setPreferences(initialPref);
+      setIsSaved(true);
+    }
+  }, [initialItinerary, initialDays, initialPref]);
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -202,7 +211,7 @@ const ItineraryPlanner = ({ destination }) => {
           ) : (
             <>
               <span>✨</span>
-              <span>Generate {days}-Day Itinerary</span>
+              <span>{itinerary ? 'Re-Generate' : `Generate ${days}-Day`} Itinerary</span>
             </>
           )}
         </button>
@@ -244,7 +253,7 @@ const ItineraryPlanner = ({ destination }) => {
             <div className="itinerary__result-header">
               <div className="itinerary__result-badge">
                 <span aria-hidden="true">✨</span>
-                <span>Your {days}-Day {destination.name} Itinerary</span>
+                <span>{initialItinerary && isSaved ? 'Loaded Saved Plan' : `Your ${days}-Day ${destination.name} Itinerary`}</span>
               </div>
               <div className="itinerary__result-actions">
                 <button
@@ -263,7 +272,7 @@ const ItineraryPlanner = ({ destination }) => {
                   id="regenerate-itinerary-btn"
                   aria-label="Regenerate itinerary"
                 >
-                  Regenerate
+                  Re-Generate
                 </button>
               </div>
             </div>

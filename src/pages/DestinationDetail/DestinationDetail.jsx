@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { destinations } from '../../data/destinations';
 import { searchDestinationImage, getImageSrc } from '../../services/imageService';
+import { getSavedTripById, getSavedTripByDestination } from '../../services/storageService';
 import WeatherWidget from '../../components/WeatherWidget/WeatherWidget';
 import FamousPlaces from '../../components/FamousPlaces/FamousPlaces';
 import ChatBot from '../../components/ChatBot/ChatBot';
@@ -11,16 +12,38 @@ import './DestinationDetail.css';
 
 const DestinationDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const destination = destinations.find((d) => d.id === id);
 
   const [heroImage, setHeroImage] = useState(null);
   const [heroLoading, setHeroLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'chat' | 'itinerary'
+  const [savedTrip, setSavedTrip] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  useEffect(() => {
+    if (!destination) return;
+
+    // Check if tripId is in search params or if user already saved a trip for this destination
+    const tripId = searchParams.get('tripId');
+    let loaded = null;
+    if (tripId) {
+      loaded = getSavedTripById(tripId);
+    }
+    if (!loaded) {
+      loaded = getSavedTripByDestination(destination.id);
+    }
+
+    if (loaded) {
+      setSavedTrip(loaded);
+      setActiveTab('itinerary');
+    } else if (searchParams.get('tab') === 'itinerary') {
+      setActiveTab('itinerary');
+    }
+  }, [id, destination, searchParams]);
 
   useEffect(() => {
     if (!destination) return;
@@ -85,6 +108,9 @@ const DestinationDetail = () => {
               {destination.category.map((cat) => (
                 <span key={cat} className="badge badge--muted">{cat}</span>
               ))}
+              {savedTrip && (
+                <span className="badge badge--accent">✓ Saved Itinerary Preloaded</span>
+              )}
             </div>
 
             <h1 className="dest-detail__title display-font">
@@ -106,7 +132,7 @@ const DestinationDetail = () => {
             onClick={() => setActiveTab('overview')}
             id="tab-overview"
           >
-            🏛️ Overview & Famous Places
+            Overview & Places
           </button>
           <button
             role="tab"
@@ -115,7 +141,7 @@ const DestinationDetail = () => {
             onClick={() => setActiveTab('itinerary')}
             id="tab-itinerary"
           >
-            📅 AI Itinerary Planner
+            Itinerary Planner {savedTrip ? '(Saved Plan Active)' : ''}
           </button>
           <button
             role="tab"
@@ -124,7 +150,7 @@ const DestinationDetail = () => {
             onClick={() => setActiveTab('chat')}
             id="tab-chat"
           >
-            🤖 AI Assistant Chat
+            AI Assistant Chat
           </button>
         </div>
 
@@ -155,7 +181,12 @@ const DestinationDetail = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                <ItineraryPlanner destination={destination} />
+                <ItineraryPlanner
+                  destination={destination}
+                  initialItinerary={savedTrip?.daysData || null}
+                  initialDays={savedTrip?.days || 3}
+                  initialPref={savedTrip?.preferences || ''}
+                />
               </motion.div>
             )}
 
@@ -181,7 +212,6 @@ const DestinationDetail = () => {
             {/* AI Assistant Quick Card */}
             {activeTab !== 'chat' && (
               <div className="dest-detail__sidebar-card card">
-                <span className="dest-detail__sidebar-icon">🤖</span>
                 <h3>Have questions about {destination.name}?</h3>
                 <p>Chat with our AI travel assistant for instant tips and advice.</p>
                 <button
@@ -197,15 +227,14 @@ const DestinationDetail = () => {
             {/* Quick Itinerary CTA Card */}
             {activeTab !== 'itinerary' && (
               <div className="dest-detail__sidebar-card card">
-                <span className="dest-detail__sidebar-icon">📅</span>
-                <h3>Plan a trip to {destination.name}</h3>
-                <p>Generate a customized day-by-day itinerary tailored to your days & preferences.</p>
+                <h3>{savedTrip ? 'View Saved Plan' : `Plan a trip to ${destination.name}`}</h3>
+                <p>{savedTrip ? 'You have a saved trip plan for this destination.' : 'Generate a customized day-by-day itinerary tailored to your days & preferences.'}</p>
                 <button
                   type="button"
                   className="btn btn--primary btn--sm"
                   onClick={() => setActiveTab('itinerary')}
                 >
-                  Generate Plan →
+                  {savedTrip ? 'Open Saved Plan →' : 'Generate Plan →'}
                 </button>
               </div>
             )}

@@ -7,34 +7,13 @@ A modern, design-led travel web application built for the **Front-End Developer 
 
 ---
 
-## 📸 Application Preview & Screenshots
+## 📸 Application Screenshots
 
-### 01. Landing Experience (Video Hero & Real-Time Weather)
-> Fullscreen hero with looping video background, animated statistical counters, and instant geolocation weather lookup.
+### 01. Landing Experience & Hero Explorer
+![Landing Hero Preview](./screenshots/01-landing-hero.svg)
 
-```
-+-----------------------------------------------------------------------+
-|  ✈ Wanderlust           Home   Destinations   My Trips (2)   👤 Sign In |
-|-----------------------------------------------------------------------|
-|                     DISCOVER THE WORLD, YOUR WAY.                      |
-|          Explore 20 curated world destinations with live weather,      |
-|             famous places, and an AI trip planner assistant.           |
-|                                                                       |
-|  [ Explore Destinations -> ]                                          |
-+-----------------------------------------------------------------------+
-```
-
-### 02. Destination Explorer & Dynamic Filters
-> Filter 20 world destinations by continent and travel category (Cultural, Romantic, Beach, Historic, Modern, Luxury, Nature, etc.). Search with debounced text input.
-
-### 03. Famous Places & Live Pexels Imagery
-> Every destination displays notable landmarks with dynamic, high-resolution photography fetched live from the Pexels API with custom fallback resilience.
-
-### 04. AI Assistant Chat & Day-by-Day Itinerary Planner
-> Interactive Google Gemini AI (`gemini-3.6-flash`) conversational assistant and structured day-by-day travel plan generator (morning, afternoon, evening, accommodation, costs, and practical tips).
-
-### 05. User Profile Vault & Saved Trips
-> Bookmark destinations and save AI-generated itineraries to your local profile vault (`/saved`), featuring a live saved-trips counter badge in the navigation bar.
+### 02. My Travel Vault & Saved AI Itineraries
+![Saved Trips Vault Preview](./screenshots/02-ai-itinerary-vault.svg)
 
 ---
 
@@ -48,7 +27,7 @@ A modern, design-led travel web application built for the **Front-End Developer 
 | **04** | **Location Awareness** | Browser **Geolocation API** coordinates lookup with manual city search fallback and permission-denied state handling. |
 | **05** | **Real-Time Weather** | Live weather data powered by **OpenWeather API** (temperature, feels-like, condition icon, humidity, wind speed, visibility). |
 | **06** | **AI Chatbot** | Conversational assistant powered by **Google Gemini API** (`gemini-3.6-flash`) with suggested prompt chips and real-time typing indicators. |
-| **07** | **Itinerary Planner** | AI-generated 2 to 10-day travel plans rendered as interactive, expandable Day cards with morning/afternoon/evening periods. |
+| **07** | **Itinerary Planner** | AI-generated 2 to 10-day travel plans rendered as interactive, expandable Day cards with morning/afternoon/evening periods. Auto pre-loads saved itineraries. |
 | **08** | **User Profile & Saved Trips** | Full authentication/login system (`/login`) and saved trips vault (`/saved`) to store itineraries and bookmarked places permanently. |
 
 ---

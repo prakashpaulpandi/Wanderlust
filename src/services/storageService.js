@@ -11,11 +11,20 @@ export const getSavedTrips = () => {
   }
 };
 
+export const getSavedTripById = (tripId) => {
+  const trips = getSavedTrips();
+  return trips.find(t => t.id === tripId) || null;
+};
+
+export const getSavedTripByDestination = (destId) => {
+  const trips = getSavedTrips();
+  return trips.find(t => t.destinationId === destId) || null;
+};
+
 export const saveTrip = (trip) => {
   try {
     const trips = getSavedTrips();
-    // Check if trip for destination & days already exists, update or append
-    const existingIndex = trips.findIndex(t => t.id === trip.id);
+    const existingIndex = trips.findIndex(t => t.id === trip.id || (t.destinationId === trip.destinationId && t.days === trip.days));
     if (existingIndex >= 0) {
       trips[existingIndex] = { ...trip, savedAt: Date.now() };
     } else {
