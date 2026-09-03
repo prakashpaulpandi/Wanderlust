@@ -8,16 +8,23 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [savedCount, setSavedCount] = useState(0);
+  const [user, setUser] = useState(null);
   const location = useLocation();
 
-  const updateCount = () => {
+  const updateState = () => {
     setSavedCount(getSavedTrips().length);
+    const savedUser = localStorage.getItem('wanderlust_user');
+    setUser(savedUser ? JSON.parse(savedUser) : null);
   };
 
   useEffect(() => {
-    updateCount();
-    window.addEventListener('storage-updated', updateCount);
-    return () => window.removeEventListener('storage-updated', updateCount);
+    updateState();
+    window.addEventListener('storage-updated', updateState);
+    window.addEventListener('user-updated', updateState);
+    return () => {
+      window.removeEventListener('storage-updated', updateState);
+      window.removeEventListener('user-updated', updateState);
+    };
   }, []);
 
   useEffect(() => {
@@ -62,11 +69,18 @@ const Navbar = () => {
             className={({ isActive }) => `navbar__link navbar__profile-tag ${isActive ? 'active' : ''}`}
             id="nav-my-trips"
           >
-            <span className="navbar__profile-avatar">👤</span>
             <span>My Trips</span>
             {savedCount > 0 && (
               <span className="navbar__badge">{savedCount}</span>
             )}
+          </NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => `navbar__link navbar__user-btn ${isActive ? 'active' : ''}`}
+            id="nav-login"
+          >
+            <span className="navbar__profile-avatar">👤</span>
+            <span>{user ? user.name : 'Sign In'}</span>
           </NavLink>
         </nav>
 
@@ -105,6 +119,9 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/saved" className={({ isActive }) => `navbar__mobile-link ${isActive ? 'active' : ''}`}>
                 My Trips ({savedCount})
+              </NavLink>
+              <NavLink to="/login" className={({ isActive }) => `navbar__mobile-link ${isActive ? 'active' : ''}`}>
+                {user ? `Account (${user.name})` : 'Sign In / Register'}
               </NavLink>
             </nav>
           </motion.div>

@@ -1,56 +1,65 @@
 # ✈ Wanderlust — AI-Powered Travel Explorer
 
-A modern, design-led travel web application built for the **Front-End Developer Assessment** at **Design Esthetics**. 
+A modern, design-led travel web application built for the **Front-End Developer Assessment** at **Design Esthetics**.
 
-Wanderlust helps travelers explore 20 curated world destinations, check live weather, discover famous places with dynamic photos, chat with an AI travel companion, and generate personalized, day-by-day travel itineraries.
+🔗 **Live Deployed Application**: [https://wanderlust-cyan-three.vercel.app/](https://wanderlust-cyan-three.vercel.app/)  
+💻 **GitHub Repository**: [https://github.com/prakashpaulpandi/Wanderlust](https://github.com/prakashpaulpandi/Wanderlust)
+
+---
+
+## 📸 Application Preview & Screenshots
+
+### 01. Landing Experience (Video Hero & Real-Time Weather)
+> Fullscreen hero with looping video background, animated statistical counters, and instant geolocation weather lookup.
+
+```
++-----------------------------------------------------------------------+
+|  ✈ Wanderlust           Home   Destinations   My Trips (2)   👤 Sign In |
+|-----------------------------------------------------------------------|
+|                     DISCOVER THE WORLD, YOUR WAY.                      |
+|          Explore 20 curated world destinations with live weather,      |
+|             famous places, and an AI trip planner assistant.           |
+|                                                                       |
+|  [ Explore Destinations -> ]                                          |
++-----------------------------------------------------------------------+
+```
+
+### 02. Destination Explorer & Dynamic Filters
+> Filter 20 world destinations by continent and travel category (Cultural, Romantic, Beach, Historic, Modern, Luxury, Nature, etc.). Search with debounced text input.
+
+### 03. Famous Places & Live Pexels Imagery
+> Every destination displays notable landmarks with dynamic, high-resolution photography fetched live from the Pexels API with custom fallback resilience.
+
+### 04. AI Assistant Chat & Day-by-Day Itinerary Planner
+> Interactive Google Gemini AI (`gemini-3.6-flash`) conversational assistant and structured day-by-day travel plan generator (morning, afternoon, evening, accommodation, costs, and practical tips).
+
+### 05. User Profile Vault & Saved Trips
+> Bookmark destinations and save AI-generated itineraries to your local profile vault (`/saved`), featuring a live saved-trips counter badge in the navigation bar.
 
 ---
 
 ## 🌟 Key Features
 
-### 01. Landing Experience with Video Hero
-- Immersive hero banner featuring a looping background video.
-- Smooth entrance animations powered by Framer Motion.
-- Quick navigation and real-time statistics preview.
-
-### 02. Destination Explorer
-- Browse 20 world destinations across 6 continents.
-- Real-time search with debounced input.
-- Multi-category filtering (Continent & Trip Type: Cultural, Romantic, Beach, Historic, Modern, etc.).
-- Dedicated detail pages for each destination.
-
-### 03. Famous Places Showcase
-- Notable places and landmarks presented for each destination.
-- Dynamic high-resolution imagery fetched from **Pexels API**.
-- Numbered badge overlay and hover interactions.
-
-### 04. Location Awareness & Weather Integration
-- Geolocation API support to detect user's current coordinates.
-- City search fallback for instant weather lookups anywhere in the world.
-- Integrated **OpenWeather API** showing real-time temperature, condition icons, humidity, wind speed, and visibility.
-- Comprehensive handling for denied location permissions, loading states, and API failures.
-
-### 05. AI Chatbot (Google Gemini API)
-- Interactive travel assistant for every destination.
-- Context-aware responses answering questions on best times to visit, local customs, budgeting, and packing lists.
-- Suggested quick-prompt chips for common questions.
-- Accessible keyboard shortcuts and real-time typing indicators.
-
-### 06. AI Day-by-Day Itinerary Planner
-- Generate customized travel itineraries for 2 to 10 days.
-- Structured output rendered on the page as interactive, expandable day cards (not raw text).
-- Includes Morning, Afternoon, and Evening activities, practical tips, accommodation areas, and estimated costs.
-- Optional preference input (e.g. budget, luxury, vegetarian, family-friendly).
+| # | Feature | Description |
+|---|---|---|
+| **01** | **Landing Experience** | Looping video hero background, responsive dark luxury theme (`#080c14` + `#f5a623` amber gold), Framer Motion entrance animations. |
+| **02** | **Destination Explorer** | 20 curated world destinations across 6 continents. Search by city/country name with debounced inputs and multi-category filtering. |
+| **03** | **Famous Places** | High-definition landmark photos loaded dynamically from **Pexels API** with structured location descriptions and numbered badges. |
+| **04** | **Location Awareness** | Browser **Geolocation API** coordinates lookup with manual city search fallback and permission-denied state handling. |
+| **05** | **Real-Time Weather** | Live weather data powered by **OpenWeather API** (temperature, feels-like, condition icon, humidity, wind speed, visibility). |
+| **06** | **AI Chatbot** | Conversational assistant powered by **Google Gemini API** (`gemini-3.6-flash`) with suggested prompt chips and real-time typing indicators. |
+| **07** | **Itinerary Planner** | AI-generated 2 to 10-day travel plans rendered as interactive, expandable Day cards with morning/afternoon/evening periods. |
+| **08** | **User Profile & Saved Trips** | Full authentication/login system (`/login`) and saved trips vault (`/saved`) to store itineraries and bookmarked places permanently. |
 
 ---
 
 ## 🛠️ Tech Stack & APIs
 
-- **Framework**: React 18 + Vite
+- **Frontend**: React 18 + Vite
 - **Routing**: React Router DOM v6
 - **Animations**: Framer Motion
-- **HTTP Client**: Axios & Fetch API
-- **Styling**: Vanilla CSS with custom design tokens (dark-mode aesthetic, glassmorphic navbar)
+- **Styling**: Vanilla CSS with design-led dark mode tokens & glassmorphic navigation
+- **Persistence**: LocalStorage state synchronization
 - **APIs Used**:
   - 🌤️ **OpenWeather API**: Live weather & forecast data
   - 📸 **Pexels API**: Dynamic destination & place imagery
@@ -58,16 +67,7 @@ Wanderlust helps travelers explore 20 curated world destinations, check live wea
 
 ---
 
-## 🎨 Design Decisions & Esthetics
-
-1. **Dark Premium Theme**: Deep navy background (`#080c14`) paired with vibrant amber/gold accents (`#f5a623`), establishing a luxury aesthetic aligned with Design Esthetics branding.
-2. **Intentional Motion**: Micro-interactions, hover card elevations, glassmorphic sticky headers, and smooth tab transitions.
-3. **Resilient UX**: Custom state handling for loading skeletons, empty search results, denied browser location access, and missing API keys.
-4. **Accessibility (a11y)**: Semantic HTML tags (`main`, `nav`, `article`, `header`, `footer`), ARIA labels, focus states, and keyboard navigation.
-
----
-
-## 🚀 Local Setup Instructions
+## 🚀 How to Run Locally
 
 ### Prerequisites
 - Node.js 18.0 or higher
@@ -77,8 +77,8 @@ Wanderlust helps travelers explore 20 curated world destinations, check live wea
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/travel-app.git
-   cd travel-app
+   git clone https://github.com/prakashpaulpandi/Wanderlust.git
+   cd Wanderlust
    ```
 
 2. **Install dependencies**:
@@ -87,11 +87,11 @@ Wanderlust helps travelers explore 20 curated world destinations, check live wea
    ```
 
 3. **Set up Environment Variables**:
-   Create a `.env` file in the project root (copy from `.env.example`):
+   Create a `.env` file in the project root directory:
    ```env
-   VITE_OPENWEATHER_API_KEY=your_openweather_api_key
-   VITE_PEXELS_API_KEY=your_pexels_api_key
-   VITE_GEMINI_API_KEY=your_gemini_api_key
+   VITE_OPENWEATHER_API_KEY=your_openweather_api_key_here
+   VITE_PEXELS_API_KEY=your_pexels_api_key_here
+   VITE_GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
 4. **Run Development Server**:
@@ -107,48 +107,7 @@ Wanderlust helps travelers explore 20 curated world destinations, check live wea
 
 ---
 
-## 🌐 Live Deployment
+## 📄 License & Credits
 
-Deployed on **Vercel**: `[Your Deployed URL Will Be Placed Here]`
-
----
-
-## 📁 Repository Structure
-
-```
-Travel/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── ChatBot/
-│   │   ├── DestinationCard/
-│   │   ├── FamousPlaces/
-│   │   ├── Footer/
-│   │   ├── Hero/
-│   │   ├── ItineraryPlanner/
-│   │   ├── LocationWeather/
-│   │   ├── Navbar/
-│   │   └── WeatherWidget/
-│   ├── data/
-│   │   └── destinations.js
-│   ├── hooks/
-│   │   ├── useDebounce.js
-│   │   └── useGeolocation.js
-│   ├── pages/
-│   │   ├── DestinationDetail/
-│   │   ├── Destinations/
-│   │   └── Home/
-│   ├── services/
-│   │   ├── geminiService.js
-│   │   ├── imageService.js
-│   │   └── weatherService.js
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── .env.example
-├── .gitignore
-├── README.md
-├── package.json
-├── vercel.json
-└── vite.config.js
-```
+Built for the **Design Esthetics Front-End Assessment**.  
+© 2026 Wanderlust.
